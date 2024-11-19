@@ -140,3 +140,28 @@ aubreanna:bubb13guM!@#123
 ```
 aubreanna:bubb13guM!@#123
 ```
+
+## Post SSH:
+
+- Now that I'm connected fully to `aubreanna`'s machine I want to try and take a look at the closed webserver I seen earlier from my nmap scan
+- Using `netstat -ano` we can look at the network connections on the machine
+- **netstat -ano Results:**
+```
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       Timer
+tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      off (0.00/0/0)
+tcp        0      0 127.0.0.1:8080          0.0.0.0:*               LISTEN      off (0.00/0/0)
+tcp        0      0 127.0.0.1:44243         0.0.0.0:*               LISTEN      off (0.00/0/0)
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      off (0.00/0/0)
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      off (0.00/0/0)
+tcp        0    324 10.10.103.219:22        10.2.17.217:51700       ESTABLISHED on (0.42/0/0)
+tcp        0      0 10.10.103.219:41524     10.2.17.217:53          CLOSE_WAIT  off (0.00/0/0)
+tcp6       0      0 :::80                   :::*                    LISTEN      off (0.00/0/0)
+tcp6       0      0 :::22                   :::*                    LISTEN      off (0.00/0/0)
+tcp6       1      0 10.10.103.219:80        10.2.17.217:35108       CLOSE_WAIT  keepalive (5183.12/0/0)
+udp        0      0 127.0.0.53:53           0.0.0.0:*                           off (0.00/0/0)
+udp        0      0 10.10.103.219:68        0.0.0.0:*                           off (0.00/0/0)
+raw6       0      0 :::58                   :::*                    7           off (0.00/0/0)
+```
+
+- This confirms that there is a webserver running on `127.0.0.1` or `localhost` on port `8080`
