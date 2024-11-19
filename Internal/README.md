@@ -35,7 +35,7 @@ Nmap done: 1 IP address (1 host up) scanned in 31.00 seconds
 - Also note of `8080/tcp closed http-proxy`
 
 - dirsearch to search for hidden directories and files on the web server: `dirsearch -u internal.thm -x 400,500 -r -t 100`
-- **Dirsearch Scan Results**
+- **Dirsearch Scan Results:**
 ```
 [14:08:56] Starting: 
 [14:09:03] 403 -  277B  - /.ht_wsr.txt                                      
@@ -69,5 +69,4 @@ Nmap done: 1 IP address (1 host up) scanned in 31.00 seconds
 [14:09:38] 404 -   51KB - /wordpress/                                       
                                                                              
 Task Completed
-
 ```
