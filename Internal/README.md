@@ -100,7 +100,7 @@ Task Completed
 I was able to find that the login credentials are Username: admin, Password: my2boys
 ```
 
-## Gaining Access To The Machine:
+## Exploitation/Gaining Access:
 - Since I have an admin account I can use the `Theme Editor` to get myself a reverse shell on the machine
 - I can use this `php-reverse-shell` from [Pentestmonkey](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php)
 
@@ -146,7 +146,7 @@ aubreanna:bubb13guM!@#123
 THM{***************}
 ```
 
-## Post SSH:
+## Post Exploitation:
 
 - Now that I'm connected fully to `aubreanna`'s machine I want to try and take a look at the closed webserver I seen earlier from my nmap scan
 - Using `netstat -ano` I can look at the network connections on the machine
@@ -193,6 +193,8 @@ raw6       0      0 :::58                   :::*                    7           
 ```
 admin:spongebob
 ```
+
+## Privilege Escalation
 
 - Using the `Script Console` in `Manage Jenkins` I can attempt to get another reverse shell on this machine using `Groovy script`
 - I can use this `groovy-script-reverse-shell` from [frohoff](https://gist.github.com/frohoff/fed1ffaab9b9beeb1c76)
