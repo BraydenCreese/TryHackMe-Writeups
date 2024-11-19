@@ -237,7 +237,7 @@ admin:spongebob
 
 - Using the `Script Console` in `Manage Jenkins` I can attempt to get another reverse shell on this machine using `Groovy script`
 - I can use this `groovy-script-reverse-shell` from [frohoff](https://gist.github.com/frohoff/fed1ffaab9b9beeb1c76)
-- I'm going to chage the `String cmd="cmd.exe";` to go to `/bin/sh`. Doing this will allow as to have full access to the machine's command-line interface
+- I'm going to chage the `String cmd="cmd.exe";` to go to `/bin/sh`. Doing this will allow me to have hopefully have full access to the machine's command-line interface
 
 ![alt text](images/groozy.png)
 
