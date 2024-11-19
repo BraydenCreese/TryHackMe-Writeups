@@ -30,5 +30,44 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 31.00 seconds
-'''
-- Test
+```
+- We can see there is a open `http` on port `80`
+- Also note of `8080/tcp closed http-proxy`
+
+- dirsearch to search for hidden directories and files on the web server: `dirsearch -u internal.thm -x 400,500 -r -t 100`
+- **Dirsearch Scan Results**
+```
+[14:08:56] Starting: 
+[14:09:03] 403 -  277B  - /.ht_wsr.txt                                      
+[14:09:03] 403 -  277B  - /.htaccess.bak1                                   
+[14:09:03] 403 -  277B  - /.htaccess.save                                   
+[14:09:03] 403 -  277B  - /.htaccess_orig
+[14:09:03] 403 -  277B  - /.htaccess.orig                                   
+[14:09:03] 403 -  277B  - /.htaccess_sc
+[14:09:03] 403 -  277B  - /.htaccessBAK                                     
+[14:09:03] 403 -  277B  - /.htaccess_extra
+[14:09:03] 403 -  277B  - /.htaccess.sample
+[14:09:03] 403 -  277B  - /.htaccessOLD
+[14:09:03] 403 -  277B  - /.htm                                             
+[14:09:03] 403 -  277B  - /.html
+[14:09:03] 403 -  277B  - /.htaccessOLD2                                    
+[14:09:03] 403 -  277B  - /.htpasswd_test                                   
+[14:09:03] 403 -  277B  - /.httr-oauth
+[14:09:03] 403 -  277B  - /.htpasswds
+[14:09:04] 403 -  277B  - /.php                                             
+[14:09:12] 301 -  311B  - /blog  ->  http://internal.thm/blog/              
+[14:09:12] 200 -    2KB - /blog/wp-login.php                                
+[14:09:13] 200 -   18KB - /blog/                                            
+[14:09:20] 301 -  317B  - /javascript  ->  http://internal.thm/javascript/  
+[14:09:26] 301 -  317B  - /phpmyadmin  ->  http://internal.thm/phpmyadmin/  
+[14:09:27] 200 -    3KB - /phpmyadmin/doc/html/index.html                   
+[14:09:27] 200 -    3KB - /phpmyadmin/                                      
+[14:09:27] 200 -    3KB - /phpmyadmin/index.php                             
+[14:09:30] 403 -  277B  - /server-status/                                   
+[14:09:30] 403 -  277B  - /server-status                                    
+[14:09:37] 200 -    2KB - /wordpress/wp-login.php                           
+[14:09:38] 404 -   51KB - /wordpress/                                       
+                                                                             
+Task Completed
+
+```
