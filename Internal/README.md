@@ -106,7 +106,7 @@ I was able to find that the login credentials are Username: admin, Password: my2
 
 - I'm going to replace the `archive.php` directory
 
-![alt text](php-shell.png)
+![alt text](images/php-shell.png)
 
 - In my terminal I have the following listener setup: `rlwrap nc -lvnp 53`
 - I'm listing on port `53` as it is commonly unblocked on outgoing firewalls
@@ -178,16 +178,16 @@ raw6       0      0 :::58                   :::*                    7           
 - Using `ssh -L 8080:127.0.0.1:8080 aubreanna@internal.thm`
 - Now I am able to go to `http://127.0.0.1:8080` and see that it is running `Jenkins`
 
-![alt text](jenk.png)
+![alt text](images/jenk.png)
 
 - Assuming that the server is running defualt username credentials `admin` I'm going to use `ZAP`
 - After grabbing the login request I'm going to `Fuzz` to the login request to try and get the credentials using the `rockyou.txt` wordlist
 
-![alt text](fuzz.png)
+![alt text](images/fuzz.png)
 
 - **Fuzz Results**
 
-![alt text](fuzz_res.png)
+![alt text](images/fuzz_res.png)
 
 - I now have the `Jenkins` login credentials:
 ```
@@ -200,7 +200,7 @@ admin:spongebob
 - I can use this `groovy-script-reverse-shell` from [frohoff](https://gist.github.com/frohoff/fed1ffaab9b9beeb1c76)
 - I'm going to chage the `String cmd="cmd.exe";` to go to `/bin/sh`. Doing this will allow as to have full access to the machine's command-line interface
 
-![alt text](groozy.png)
+![alt text](images/groozy.png)
 
 - In my terminal I have the following listener setup: `rlwrap nc -lvnp 8044`
 
