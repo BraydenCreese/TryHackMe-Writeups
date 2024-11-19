@@ -71,6 +71,8 @@ Nmap done: 1 IP address (1 host up) scanned in 31.00 seconds
 Task Completed
 ```
 - Under the directory `http://internal.thm/wordpress/wp-login.php` we have a login page for `wordpress`
+
 ![alt text](images/internal_WP-LOGIN-SS.png)
 - Basic enumeration on the page with the login credentials using `admin:admin` can see that there is a user called admin
+
 ![alt text](images/WP-ADMIN-SS.png)
