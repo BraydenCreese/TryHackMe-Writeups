@@ -135,3 +135,8 @@ Aubreanna needed these credentials for something later.  Let her know you have t
 
 aubreanna:bubb13guM!@#123
 ```
+
+- We now have some `SSH` login credentials:
+```
+aubreanna:bubb13guM!@#123
+```
