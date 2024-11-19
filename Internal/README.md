@@ -96,8 +96,9 @@ Task Completed
 [+] Elapsed time: 00:02:17
 ```
 
+- I now have  `wordpress` login credentials the admin user:
 ```
-I was able to find that the login credentials are Username: admin, Password: my2boys
+Username: admin, Password: my2boys
 ```
 
 ## Exploitation/Gaining Access:
@@ -136,10 +137,48 @@ Aubreanna needed these credentials for something later.  Let her know you have t
 aubreanna:bubb13guM!@#123
 ```
 
-- I now have some `SSH` login credentials:
+- I now have  `SSH` login credentials for a user named aubreanna:
 ```
 aubreanna:bubb13guM!@#123
 ```
+
+- I can make sure that `aubreanna` is a real user on the machine by using `cat /etc/passwd`
+- **cat /etc/passwd Results:**
+```
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd/netif:/usr/sbin/nologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd/resolve:/usr/sbin/nologin
+syslog:x:102:106::/home/syslog:/usr/sbin/nologin
+messagebus:x:103:107::/nonexistent:/usr/sbin/nologin
+_apt:x:104:65534::/nonexistent:/usr/sbin/nologin
+lxd:x:105:65534::/var/lib/lxd/:/bin/false
+uuidd:x:106:110::/run/uuidd:/usr/sbin/nologin
+dnsmasq:x:107:65534:dnsmasq,,,:/var/lib/misc:/usr/sbin/nologin
+landscape:x:108:112::/var/lib/landscape:/usr/sbin/nologin
+pollinate:x:109:1::/var/cache/pollinate:/bin/false
+sshd:x:110:65534::/run/sshd:/usr/sbin/nologin
+aubreanna:x:1000:1000:aubreanna:/home/aubreanna:/bin/bash
+mysql:x:111:114:MySQL Server,,,:/nonexistent:/bin/false
+```
+
+- This shows us that `aubreanna` is infact a real user on the machine: `aubreanna:x:1000:1000:aubreanna:/home/aubreanna:/bin/bash`
 
 - After connecting I can `ls` and see the `user.txt` getting my first flag
 ```
