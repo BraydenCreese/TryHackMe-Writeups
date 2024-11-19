@@ -176,7 +176,15 @@ raw6       0      0 :::58                   :::*                    7           
 ![alt text](jenk.png)
 
 - Assuming that the server is running defualt username credentials `admin` I'm going to use `ZAP`
-- After grabbing the login request I'm going to `fuzz` to the login request to try and get the credentials using the `rockyou.txt` wordlist
+- After grabbing the login request I'm going to `Fuzz` to the login request to try and get the credentials using the `rockyou.txt` wordlist
 
 ![alt text](fuzz.png)
 
+- **Fuzz Results**
+
+![alt text](fuzz_res.png)
+
+- We now have the `Jenkins` login credentials:
+```
+admin:spongebob
+```
