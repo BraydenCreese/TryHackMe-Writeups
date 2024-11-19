@@ -103,3 +103,10 @@ We are able to find that the login credentials are Username: admin, Password: my
 ## Gaining Access To The Machine:
 - Since we have an admin account we can use the `Theme Editor` to get ourselves a reverse shell on the machine
 - We can use this `php-reverse-shell` from [Pentestmonkey](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php).
+
+- I'm going to replace the `archive.php` directory
+
+![alt text](php-shell.png)
+
+- In my terminal I have the following listener setup: `rlwrap nc -lvnp 53`
+- I'm listing on port `53` as it is commonly unblocked on outgoing firewalls
