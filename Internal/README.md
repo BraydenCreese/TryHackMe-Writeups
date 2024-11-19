@@ -237,7 +237,7 @@ admin:spongebob
 
 - Using the `Script Console` in `Manage Jenkins` I can attempt to get another reverse shell on this machine using `Groovy script`
 - I can use this `groovy-script-reverse-shell` from [frohoff](https://gist.github.com/frohoff/fed1ffaab9b9beeb1c76)
-- I'm going to chage the `String cmd="cmd.exe";` to go to `/bin/sh`. Doing this will allow me to have hopefully have full access to the machine's command-line interface
+- I'm going to chage the `String cmd="cmd.exe";` to go to `/bin/sh`. Doing this will allow me to hopefully have full access to the machine's command-line interface depending on the configuration of the machine's privileges
 
 ![alt text](images/groozy.png)
 
@@ -250,6 +250,8 @@ connect to [10.2.17.217] from (UNKNOWN) [10.10.103.219] 51840
 id
 uid=1000(jenkins) gid=1000(jenkins) groups=1000(jenkins)
 ```
+
+- In this case I do not have full command access apon initial enumeration  
 
 - Now that I am on a new machine I'm going to look for text files again to try and hopefully get more information/credentials using `find / -name "*.txt" -type f 2>/dev/null`
 - There is another text file in `/opt` directory on this machine called `note.txt`
