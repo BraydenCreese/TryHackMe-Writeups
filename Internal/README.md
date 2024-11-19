@@ -165,3 +165,11 @@ raw6       0      0 :::58                   :::*                    7           
 ```
 
 - This confirms that there is a webserver running on `127.0.0.1` or `localhost` on port `8080`
+
+- I can't view this page from my machine because it is running on a `loopback interface` and is bound to `127.0.0.1` on the remote machine, meaning it only accepts connections from the same machine
+
+- **To access the page I'm going to use a `SSH Tunnel`**
+- This lets me "pretend" to be the remote machine by forwarding the traffic to `127.0.0.1:8080` on the remote server
+- Using `ssh -L 8080:127.0.0.1:8080 aubreanna@internal.thm`
+- Now I am able to go to `http://127.0.0.1:8080` and see that it is running `Jenkins`
+![alt text](jenk.png)
