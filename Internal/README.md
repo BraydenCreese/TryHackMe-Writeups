@@ -2,7 +2,7 @@
 * IP = 10.10.103.219
 * Add to /etc/hosts as Internal.thm
 
-## Enumerating And Scanning:
+## Initial Enumerating And Scanning:
 - Nmap scan to discover open ports: `nmap -sV -sC -O -p 21,22,80,8080,139,143,445,443,25,110 internal.thm`
 - **nmap Scan Results:**
 ```
@@ -97,5 +97,9 @@ Task Completed
 ```
 
 ```
-We are able to find that the login credentials are **Username: admin, Password: my2boys**
+We are able to find that the login credentials are Username: admin, Password: my2boys
 ```
+
+## Gaining Access To The Machine:
+- Since we have an admin account we can use the `Theme Editor` to get ourselves a reverse shell on the machine
+- We can use this `php-reverse-shell` from [Pentestmonkey](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php).
