@@ -124,3 +124,14 @@ $
 ```
 
 - I upgraded my shell using this python command `python -c 'import pty;pty.spawn("/bin/bash")';`
+
+- In this situation the first thing i'll look for is `.txt` files using this command `find / -name "*.txt" -type f 2>/dev/null`
+- I was able to find a text file in the `/opt` directory called `wp-save.txt` so its worth taking a look at
+- **Contents of `wp-save.txt`:**
+```
+Bill,
+
+Aubreanna needed these credentials for something later.  Let her know you have them and where they are.
+
+aubreanna:bubb13guM!@#123
+```
