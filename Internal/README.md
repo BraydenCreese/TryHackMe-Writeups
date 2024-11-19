@@ -5,7 +5,7 @@
 ## Enumerating And Scanning:
 - Nmap scan to discover open ports: `nmap -sV -sC -O -p 21,22,80,8080,139,143,445,443,25,110 internal.thm`
 - **Nmap Scan Results:**
-```plaintext
+```
 PORT     STATE  SERVICE      VERSION
 21/tcp   closed ftp
 22/tcp   open   ssh          OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
@@ -30,3 +30,5 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 31.00 seconds
+
+- Test
