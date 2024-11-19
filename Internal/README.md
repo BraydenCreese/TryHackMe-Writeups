@@ -227,7 +227,7 @@ root:tr0ub13guM!@#123
 root:tr0ub13guM!@#123
 ```
 
-- After connecting I can `ls` and see the `root.txt` getting my second and last flag
+- After connecting I can `ls` and see the `root.txt` file getting my second and last flag
 ```
 THM{***************}
 ```
