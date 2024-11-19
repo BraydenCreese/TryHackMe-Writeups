@@ -172,4 +172,11 @@ raw6       0      0 :::58                   :::*                    7           
 - This lets me "pretend" to be the remote machine by forwarding the traffic to `127.0.0.1:8080` on the remote server
 - Using `ssh -L 8080:127.0.0.1:8080 aubreanna@internal.thm`
 - Now I am able to go to `http://127.0.0.1:8080` and see that it is running `Jenkins`
+
 ![alt text](jenk.png)
+
+- Assuming that the server is running defualt username credentials `admin` I'm going to use `ZAP`
+- After grabbing the login request I'm going to `fuzz` to the login request to try and get the credentials using the `rockyou.txt` wordlist
+
+![alt text](fuzz.png)
+
